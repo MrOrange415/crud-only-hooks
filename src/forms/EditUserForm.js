@@ -1,35 +1,20 @@
 import React, {useState} from 'react';
+import UserForm from './UserForm';
 
 const EditUserForm = props => {
     const [editingUser, setEditingUser] = useState(props.currentUser);
+
     if (editingUser.id !== props.currentUser.id) {
+        // update component if new user is selected
         setEditingUser(props.currentUser);
     }
 
-    const handleInputChange = event => {
-        console.log('editingUser', editingUser);
-        let {name,value} = event.target;
-        setEditingUser({ ...editingUser, [name]: value});
-    }
-
-    const handleSubmission = (event) => {
-        event.preventDefault();
-        if (!editingUser.name || !editingUser.username) {
-            return;
-        }
-
+    const handleSubmission = (editingUser) => {
         props.saveEditedUser(editingUser);
-        setEditingUser([{id: null, name: '', username: ''}]);
     }
 
     return (
-        <form>
-            <label>Name</label>
-            <input type='text' name='name' value={editingUser.name} onChange={handleInputChange}></input>
-            <label>Username</label>
-            <input type='text' name='username' value={editingUser.username} onChange={handleInputChange}></input>
-            <button onClick={handleSubmission}>Update User</button>
-        </form>
+        <UserForm user={editingUser} handleSubmission={handleSubmission} buttonText='Update User'/>
     )
 }
 

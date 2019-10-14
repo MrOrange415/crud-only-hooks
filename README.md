@@ -1,3 +1,7 @@
+Simple react app for practicing CRUD operations.  No backend, changes are just applied to component state.
+
+_______________________________________________________________________________________________________________
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
